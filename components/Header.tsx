@@ -42,6 +42,7 @@ function Header() {
           Get Started
         </button>
       </div>
+      
     </header>
   );
 }
