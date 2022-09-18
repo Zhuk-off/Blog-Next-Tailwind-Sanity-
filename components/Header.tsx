@@ -1,19 +1,22 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { forwardRef } from 'react';
 
-function Header() {
+export const Header = () => {
   return (
     <header className="mx-auto flex max-w-7xl justify-between p-5">
       <div className="flex items-center gap-5">
-        <Link href={'/'}>
-          <Image
-            className="duration-600 w-44 cursor-pointer object-contain transition-all hover:scale-[102%]"
-            src={'/logo.svg'}
-            alt="blog image"
-            width={150}
-            height={50}
-            objectFit="cover"
-          />
+        <Link href="/">
+          <a>
+            <Image
+              className="duration-600 w-44 cursor-pointer object-contain transition-all hover:scale-[102%]"
+              src={'/logo.svg'}
+              alt="blog image"
+              width={150}
+              height={50}
+              objectFit="cover"
+            />
+          </a>
         </Link>
         <div className="hidden items-center gap-5 md:inline-flex">
           <button className="px-4 py-1 transition-all duration-300 hover:rounded-full hover:bg-black hover:text-white">
@@ -42,9 +45,6 @@ function Header() {
           Get Started
         </button>
       </div>
-      
     </header>
   );
-}
-
-export default Header;
+};
