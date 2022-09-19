@@ -1,24 +1,54 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
+import Image from 'next/image';
+import Link from 'next/link';
+import { Fragment } from 'react';
 import BannerTop from '../components/BannerTop';
-import {Header} from '../components/Header';
-import { sanityClient } from '../sanity';
+import { Header } from '../components/Header';
+import { sanityClient, urlFor } from '../sanity';
 
 interface prop {
   posts: [Post];
 }
 
-const Home: NextPage<prop>  = ({posts}:prop) => {
-  console.log(posts);
-
+const Home: NextPage<prop> = ({ posts }: prop) => {
   return (
-    <div className="">
+    <div className="mx-auto max-w-7xl ">
       <Head>
         <title>Blog</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
       <BannerTop />
+      <div
+        className="grid grid-cols-1 gap-4 p-2 sm:grid-cols-2
+      md:gap-6 md:p-6 lg:grid-cols-3 lg:gap-10"
+      >
+        {posts.map((post) => (
+          <Link key={post._id} href={`/post/${post.slug.current}`}>
+            <div className="group cursor-pointer rounded-lg border overflow-hidden">
+              <img
+                className="h-60 w-full object-cover transition-transform duration-200 ease-in-out group-hover:scale-105"
+                src={post.mainImage && urlFor(post.mainImage).url()!}
+              />
+
+              <div className="flex items-start justify-between bg-white p-5">
+                <div className="">
+                  <p className='text-lg font-bold'>{post.title}</p>
+                  <p className='text-xs'>
+                    {post.description} by {post.author.name}
+                  </p>
+                </div>
+                <img
+                  className="h-12 w-12 rounded-full "
+                  src={urlFor(post.author.image).url()!}
+              
+                />
+              </div>
+            </div>
+          </Link>
+        ))}
+      </div>
     </div>
   );
 };
