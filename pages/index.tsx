@@ -37,7 +37,7 @@ const Home: NextPage<prop> = ({ posts }: prop) => {
                 <div className="">
                   <p className="text-lg font-bold">{post.title}</p>
                   <p className="text-xs mt-3">
-                    {post.description} by {post.author.name}
+                    {post.description} Автор: {post.author.name}
                   </p>
                 </div>
                 <img

@@ -63,11 +63,11 @@ function Post({ post }: Props) {
             className="h-10 w-10 rounded-full"
           />
           <p className="text-sm font-extralight">
-            Blog post by{' '}
+            Автор:{' '}
             <span className="font-semibold text-green-600">
               {post.author.name}
-            </span>{' '}
-            Published at{' ' + new Date(post._createdAt).toLocaleString()}
+            </span>{'. '}
+            Опубликовано{' ' + new Date(post._createdAt).toLocaleString()}
           </p>
         </div>
         <div className="mt-10 ">
